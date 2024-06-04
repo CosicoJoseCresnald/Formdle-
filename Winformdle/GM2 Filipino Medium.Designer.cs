@@ -104,6 +104,7 @@
             btnBack = new Button();
             btnMainMenu = new Button();
             lblInstructions = new Label();
+            btnBacktoMain = new Button();
             wordChoicePnl.SuspendLayout();
             gamePnl.SuspendLayout();
             pnlConfirmation.SuspendLayout();
@@ -113,6 +114,7 @@
             // 
             wordChoicePnl.BackgroundImage = Properties.Resources.BG;
             wordChoicePnl.BackgroundImageLayout = ImageLayout.Stretch;
+            wordChoicePnl.Controls.Add(btnBacktoMain);
             wordChoicePnl.Controls.Add(label1);
             wordChoicePnl.Controls.Add(confirmBtn);
             wordChoicePnl.Controls.Add(guessWordTxt);
@@ -137,7 +139,7 @@
             // confirmBtn
             // 
             confirmBtn.Image = Properties.Resources.confirm_button;
-            confirmBtn.Location = new Point(178, 245);
+            confirmBtn.Location = new Point(312, 250);
             confirmBtn.Name = "confirmBtn";
             confirmBtn.Size = new Size(136, 40);
             confirmBtn.TabIndex = 2;
@@ -916,6 +918,18 @@
             lblInstructions.Text = "ARE YOU SURE YOU WANTED TO GO BACK TO THE MAIN MENU?\r\nTHE GAME PROGRESS WOULD BE LOST\r\n";
             lblInstructions.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // btnBacktoMain
+            // 
+            btnBacktoMain.BackColor = Color.White;
+            btnBacktoMain.Font = new Font("Franklin Gothic Medium", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBacktoMain.Location = new Point(96, 250);
+            btnBacktoMain.Name = "btnBacktoMain";
+            btnBacktoMain.Size = new Size(90, 40);
+            btnBacktoMain.TabIndex = 382;
+            btnBacktoMain.Text = "BACK";
+            btnBacktoMain.UseVisualStyleBackColor = false;
+            btnBacktoMain.Click += btnBacktoMain_Click;
+            // 
             // game2FilipinoMedium
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -947,6 +961,7 @@
         private Button btnBack;
         private Button btnMainMenu;
         private Label lblInstructions;
+        private Button btnBackMainMenu;
         public static Panel wordChoicePnl;
         public static Button confirmBtn;
         public static TextBox guessWordTxt;
@@ -1015,6 +1030,6 @@
         public static Button eBtn;
         public static Button wBtn;
         public static Button qBtn;
-        private Button btnBackMainMenu;
+        private Button btnBacktoMain;
     }
 }

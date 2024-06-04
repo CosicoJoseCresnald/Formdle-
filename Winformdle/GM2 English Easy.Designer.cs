@@ -98,6 +98,7 @@
             btnBack = new Button();
             btnMainMenu = new Button();
             lblInstructions = new Label();
+            btnBacktoMain = new Button();
             game2EnglishEasyPnl.SuspendLayout();
             game2EnglishEasyChoicePnl.SuspendLayout();
             pnlConfirmation.SuspendLayout();
@@ -758,6 +759,7 @@
             // 
             game2EnglishEasyChoicePnl.BackgroundImage = Properties.Resources.BG;
             game2EnglishEasyChoicePnl.BackgroundImageLayout = ImageLayout.Stretch;
+            game2EnglishEasyChoicePnl.Controls.Add(btnBacktoMain);
             game2EnglishEasyChoicePnl.Controls.Add(label1);
             game2EnglishEasyChoicePnl.Controls.Add(confirmBtn);
             game2EnglishEasyChoicePnl.Controls.Add(guessWordTxt);
@@ -782,7 +784,7 @@
             // confirmBtn
             // 
             confirmBtn.Image = Properties.Resources.confirm_button;
-            confirmBtn.Location = new Point(187, 250);
+            confirmBtn.Location = new Point(307, 262);
             confirmBtn.Name = "confirmBtn";
             confirmBtn.Size = new Size(145, 40);
             confirmBtn.TabIndex = 2;
@@ -851,6 +853,18 @@
             lblInstructions.Text = "ARE YOU SURE YOU WANTED TO GO BACK TO THE MAIN MENU?\r\nTHE GAME PROGRESS WOULD BE LOST\r\n";
             lblInstructions.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // btnBacktoMain
+            // 
+            btnBacktoMain.BackColor = Color.White;
+            btnBacktoMain.Font = new Font("Franklin Gothic Medium", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBacktoMain.Location = new Point(127, 262);
+            btnBacktoMain.Name = "btnBacktoMain";
+            btnBacktoMain.Size = new Size(90, 40);
+            btnBacktoMain.TabIndex = 381;
+            btnBacktoMain.Text = "BACK";
+            btnBacktoMain.UseVisualStyleBackColor = false;
+            btnBacktoMain.Click += btnBacktoMain_Click;
+            // 
             // game2EnglishEasy
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -877,6 +891,11 @@
         private Label label1;
         private Panel panel1;
         public static Label choiceLbl;
+        private Panel pnlConfirmation;
+        private Button btnBack;
+        private Button btnMainMenu;
+        private Label lblInstructions;
+        private Button btnBackMainMenu;
         public static TextBox attempt6Char5;
         public static TextBox attempt6Char4;
         public static TextBox attempt6Char3;
@@ -939,10 +958,6 @@
         public static Panel game2EnglishEasyChoicePnl;
         public static Button confirmBtn;
         public static TextBox guessWordTxt;
-        private Panel pnlConfirmation;
-        private Button btnBack;
-        private Button btnMainMenu;
-        private Label lblInstructions;
-        private Button btnBackMainMenu;
+        private Button btnBacktoMain;
     }
 }

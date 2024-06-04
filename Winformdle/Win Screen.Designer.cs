@@ -32,6 +32,8 @@
             guessWordLbl = new Label();
             exitBtn = new Button();
             playAgainBtn = new Button();
+            lblScoreNumber = new Label();
+            lblScore = new Label();
             SuspendLayout();
             // 
             // label1
@@ -40,7 +42,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Impact", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(113, 58);
+            label1.Location = new Point(121, 65);
             label1.Name = "label1";
             label1.Size = new Size(504, 43);
             label1.TabIndex = 0;
@@ -61,7 +63,7 @@
             // exitBtn
             // 
             exitBtn.Image = Properties.Resources.exit_button;
-            exitBtn.Location = new Point(161, 234);
+            exitBtn.Location = new Point(161, 249);
             exitBtn.Name = "exitBtn";
             exitBtn.Size = new Size(144, 59);
             exitBtn.TabIndex = 2;
@@ -71,12 +73,36 @@
             // playAgainBtn
             // 
             playAgainBtn.Image = Properties.Resources.play_again_button;
-            playAgainBtn.Location = new Point(425, 234);
+            playAgainBtn.Location = new Point(425, 249);
             playAgainBtn.Name = "playAgainBtn";
             playAgainBtn.Size = new Size(146, 59);
             playAgainBtn.TabIndex = 3;
             playAgainBtn.UseVisualStyleBackColor = true;
             playAgainBtn.Click += button2_Click;
+            // 
+            // lblScoreNumber
+            // 
+            lblScoreNumber.AutoSize = true;
+            lblScoreNumber.BackColor = Color.Transparent;
+            lblScoreNumber.Font = new Font("Impact", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblScoreNumber.ForeColor = Color.WhiteSmoke;
+            lblScoreNumber.Location = new Point(409, 202);
+            lblScoreNumber.Name = "lblScoreNumber";
+            lblScoreNumber.Size = new Size(27, 29);
+            lblScoreNumber.TabIndex = 161;
+            lblScoreNumber.Text = "0";
+            // 
+            // lblScore
+            // 
+            lblScore.AutoSize = true;
+            lblScore.BackColor = Color.Transparent;
+            lblScore.Font = new Font("Impact", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblScore.ForeColor = Color.WhiteSmoke;
+            lblScore.Location = new Point(313, 202);
+            lblScore.Name = "lblScore";
+            lblScore.Size = new Size(90, 29);
+            lblScore.TabIndex = 160;
+            lblScore.Text = "SCORE: \r\n";
             // 
             // WinScreen
             // 
@@ -85,6 +111,8 @@
             BackgroundImage = Properties.Resources.BG;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(743, 450);
+            Controls.Add(lblScoreNumber);
+            Controls.Add(lblScore);
             Controls.Add(playAgainBtn);
             Controls.Add(exitBtn);
             Controls.Add(guessWordLbl);
@@ -104,5 +132,7 @@
         private Label guessWordLbl;
         private Button exitBtn;
         private Button playAgainBtn;
+        private Label lblScore;
+        public Label lblScoreNumber;
     }
 }

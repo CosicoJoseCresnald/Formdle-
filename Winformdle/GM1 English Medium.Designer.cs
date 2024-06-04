@@ -33,7 +33,7 @@
             btnMainMenu = new Button();
             lblInstructions = new Label();
             pnlGame = new Panel();
-            btnBackMainMenu = new Button();
+            btnOptions = new Button();
             panel1 = new Panel();
             attempt6Char6 = new TextBox();
             attempt5Char6 = new TextBox();
@@ -100,8 +100,21 @@
             eBtn = new Button();
             wBtn = new Button();
             qBtn = new Button();
+            pnlOptions = new Panel();
+            btnBackOptions = new Button();
+            btnBacktoMain = new Button();
+            btnAddWord = new Button();
+            lblOptions = new Label();
+            pnlAddWord = new Panel();
+            label2 = new Label();
+            lblAddWord = new Label();
+            txtAddWord = new TextBox();
+            btnAddWordBack = new Button();
+            btnAddWordConfirm = new Button();
             pnlConfirmation.SuspendLayout();
             pnlGame.SuspendLayout();
+            pnlOptions.SuspendLayout();
+            pnlAddWord.SuspendLayout();
             SuspendLayout();
             // 
             // pnlConfirmation
@@ -116,6 +129,7 @@
             pnlConfirmation.Name = "pnlConfirmation";
             pnlConfirmation.Size = new Size(511, 557);
             pnlConfirmation.TabIndex = 234;
+            pnlConfirmation.Visible = false;
             // 
             // btnBack
             // 
@@ -159,7 +173,7 @@
             // 
             pnlGame.BackgroundImage = Properties.Resources.BG;
             pnlGame.BackgroundImageLayout = ImageLayout.Stretch;
-            pnlGame.Controls.Add(btnBackMainMenu);
+            pnlGame.Controls.Add(btnOptions);
             pnlGame.Controls.Add(panel1);
             pnlGame.Controls.Add(attempt6Char6);
             pnlGame.Controls.Add(attempt5Char6);
@@ -232,17 +246,17 @@
             pnlGame.Size = new Size(511, 557);
             pnlGame.TabIndex = 235;
             // 
-            // btnBackMainMenu
+            // btnOptions
             // 
-            btnBackMainMenu.BackColor = Color.White;
-            btnBackMainMenu.Font = new Font("Franklin Gothic Medium", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBackMainMenu.Location = new Point(0, 0);
-            btnBackMainMenu.Name = "btnBackMainMenu";
-            btnBackMainMenu.Size = new Size(69, 31);
-            btnBackMainMenu.TabIndex = 380;
-            btnBackMainMenu.Text = "BACK";
-            btnBackMainMenu.UseVisualStyleBackColor = false;
-            btnBackMainMenu.Click += btnBackMainMenu_Click;
+            btnOptions.BackColor = Color.White;
+            btnOptions.Font = new Font("Franklin Gothic Medium", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnOptions.Location = new Point(0, 0);
+            btnOptions.Name = "btnOptions";
+            btnOptions.Size = new Size(69, 31);
+            btnOptions.TabIndex = 380;
+            btnOptions.Text = "BACK";
+            btnOptions.UseVisualStyleBackColor = false;
+            btnOptions.Click += btnOptions_Click;
             // 
             // panel1
             // 
@@ -865,6 +879,151 @@
             qBtn.UseVisualStyleBackColor = true;
             qBtn.Click += qBtn_Click;
             // 
+            // pnlOptions
+            // 
+            pnlOptions.BackgroundImage = Properties.Resources.BG;
+            pnlOptions.BackgroundImageLayout = ImageLayout.Stretch;
+            pnlOptions.Controls.Add(btnBackOptions);
+            pnlOptions.Controls.Add(btnBacktoMain);
+            pnlOptions.Controls.Add(btnAddWord);
+            pnlOptions.Controls.Add(lblOptions);
+            pnlOptions.Dock = DockStyle.Fill;
+            pnlOptions.Location = new Point(0, 0);
+            pnlOptions.Name = "pnlOptions";
+            pnlOptions.Size = new Size(511, 557);
+            pnlOptions.TabIndex = 236;
+            pnlOptions.Visible = false;
+            // 
+            // btnBackOptions
+            // 
+            btnBackOptions.FlatAppearance.BorderColor = Color.Black;
+            btnBackOptions.FlatAppearance.BorderSize = 34;
+            btnBackOptions.Font = new Font("Franklin Gothic Medium", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBackOptions.Location = new Point(188, 361);
+            btnBackOptions.Name = "btnBackOptions";
+            btnBackOptions.Size = new Size(154, 71);
+            btnBackOptions.TabIndex = 12;
+            btnBackOptions.Text = "BACK";
+            btnBackOptions.UseVisualStyleBackColor = true;
+            btnBackOptions.Click += btnBackOptions_Click;
+            // 
+            // btnBacktoMain
+            // 
+            btnBacktoMain.FlatAppearance.BorderColor = Color.Black;
+            btnBacktoMain.FlatAppearance.BorderSize = 34;
+            btnBacktoMain.Font = new Font("Franklin Gothic Medium", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBacktoMain.Location = new Point(188, 159);
+            btnBacktoMain.Name = "btnBacktoMain";
+            btnBacktoMain.Size = new Size(154, 71);
+            btnBacktoMain.TabIndex = 11;
+            btnBacktoMain.Tag = "";
+            btnBacktoMain.Text = "BACK TO MAIN MENU";
+            btnBacktoMain.UseVisualStyleBackColor = true;
+            btnBacktoMain.Click += btnBacktoMain_Click;
+            // 
+            // btnAddWord
+            // 
+            btnAddWord.FlatAppearance.BorderColor = Color.Black;
+            btnAddWord.FlatAppearance.BorderSize = 34;
+            btnAddWord.Font = new Font("Franklin Gothic Medium", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddWord.Location = new Point(188, 261);
+            btnAddWord.Name = "btnAddWord";
+            btnAddWord.Size = new Size(154, 71);
+            btnAddWord.TabIndex = 10;
+            btnAddWord.Text = "ADD A NEW WORD";
+            btnAddWord.UseVisualStyleBackColor = true;
+            btnAddWord.Click += btnAddWord_Click;
+            // 
+            // lblOptions
+            // 
+            lblOptions.AutoSize = true;
+            lblOptions.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblOptions.Location = new Point(228, 86);
+            lblOptions.Name = "lblOptions";
+            lblOptions.Size = new Size(76, 21);
+            lblOptions.TabIndex = 9;
+            lblOptions.Text = "OPTIONS";
+            lblOptions.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pnlAddWord
+            // 
+            pnlAddWord.BackgroundImage = Properties.Resources.BG;
+            pnlAddWord.BackgroundImageLayout = ImageLayout.Stretch;
+            pnlAddWord.Controls.Add(label2);
+            pnlAddWord.Controls.Add(lblAddWord);
+            pnlAddWord.Controls.Add(txtAddWord);
+            pnlAddWord.Controls.Add(btnAddWordBack);
+            pnlAddWord.Controls.Add(btnAddWordConfirm);
+            pnlAddWord.Dock = DockStyle.Fill;
+            pnlAddWord.Location = new Point(0, 0);
+            pnlAddWord.Name = "pnlAddWord";
+            pnlAddWord.Size = new Size(511, 557);
+            pnlAddWord.TabIndex = 237;
+            pnlAddWord.Visible = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Impact", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.WhiteSmoke;
+            label2.Location = new Point(110, 171);
+            label2.Name = "label2";
+            label2.Size = new Size(334, 92);
+            label2.TabIndex = 20;
+            label2.Text = "Note: the word you have added might\r\n have a small chance to appear in the\r\n next few games, since the word \r\ninventory contains too many words\r\n";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblAddWord
+            // 
+            lblAddWord.AutoSize = true;
+            lblAddWord.BackColor = Color.Transparent;
+            lblAddWord.Font = new Font("Impact", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAddWord.ForeColor = Color.WhiteSmoke;
+            lblAddWord.Location = new Point(63, 86);
+            lblAddWord.Name = "lblAddWord";
+            lblAddWord.Size = new Size(406, 58);
+            lblAddWord.TabIndex = 19;
+            lblAddWord.Text = "Please type the word that you wanted\r\nto add in the Word Inventory\r\n";
+            lblAddWord.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txtAddWord
+            // 
+            txtAddWord.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtAddWord.Location = new Point(181, 295);
+            txtAddWord.MaxLength = 6;
+            txtAddWord.Multiline = true;
+            txtAddWord.Name = "txtAddWord";
+            txtAddWord.Size = new Size(164, 40);
+            txtAddWord.TabIndex = 17;
+            txtAddWord.TextAlign = HorizontalAlignment.Center;
+            // 
+            // btnAddWordBack
+            // 
+            btnAddWordBack.FlatAppearance.BorderColor = Color.Black;
+            btnAddWordBack.FlatAppearance.BorderSize = 34;
+            btnAddWordBack.Font = new Font("Franklin Gothic Medium", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddWordBack.Location = new Point(75, 366);
+            btnAddWordBack.Name = "btnAddWordBack";
+            btnAddWordBack.Size = new Size(154, 71);
+            btnAddWordBack.TabIndex = 16;
+            btnAddWordBack.Text = "BACK";
+            btnAddWordBack.UseVisualStyleBackColor = true;
+            btnAddWordBack.Click += btnAddWordBack_Click;
+            // 
+            // btnAddWordConfirm
+            // 
+            btnAddWordConfirm.FlatAppearance.BorderColor = Color.Black;
+            btnAddWordConfirm.FlatAppearance.BorderSize = 34;
+            btnAddWordConfirm.Font = new Font("Franklin Gothic Medium", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddWordConfirm.Location = new Point(297, 366);
+            btnAddWordConfirm.Name = "btnAddWordConfirm";
+            btnAddWordConfirm.Size = new Size(154, 71);
+            btnAddWordConfirm.TabIndex = 14;
+            btnAddWordConfirm.Text = "ADD A NEW WORD";
+            btnAddWordConfirm.UseVisualStyleBackColor = true;
+            btnAddWordConfirm.Click += btnAddWordConfirm_Click;
+            // 
             // game1EnglishMedium
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -874,6 +1033,8 @@
             ClientSize = new Size(511, 557);
             Controls.Add(pnlGame);
             Controls.Add(pnlConfirmation);
+            Controls.Add(pnlAddWord);
+            Controls.Add(pnlOptions);
             DoubleBuffered = true;
             Name = "game1EnglishMedium";
             StartPosition = FormStartPosition.CenterScreen;
@@ -884,6 +1045,10 @@
             pnlConfirmation.PerformLayout();
             pnlGame.ResumeLayout(false);
             pnlGame.PerformLayout();
+            pnlOptions.ResumeLayout(false);
+            pnlOptions.PerformLayout();
+            pnlAddWord.ResumeLayout(false);
+            pnlAddWord.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -895,7 +1060,7 @@
         private Label lblInstructions;
         private Panel pnlGame;
         private Panel panel1;
-        private Button btnBackMainMenu;
+        private Button btnOptions;
         public static TextBox attempt6Char6;
         public static TextBox attempt5Char6;
         public static TextBox attempt4Char6;
@@ -961,5 +1126,16 @@
         public static Button eBtn;
         public static Button wBtn;
         public static Button qBtn;
+        private Panel pnlOptions;
+        private Button btnBackOptions;
+        private Button btnBacktoMain;
+        private Button btnAddWord;
+        private Label lblOptions;
+        private Panel pnlAddWord;
+        private Label label2;
+        private Label lblAddWord;
+        public static TextBox txtAddWord;
+        private Button btnAddWordBack;
+        private Button btnAddWordConfirm;
     }
 }

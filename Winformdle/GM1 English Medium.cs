@@ -53,7 +53,7 @@ namespace Winformdle
         {
             //resets the guess word
             Random random = new Random();
-            randomGuessWord = random.Next(wordInventory.Length);
+            randomGuessWord = random.Next(wordInventory.Count);
             guessWord = wordInventory[randomGuessWord];
 
             System.Media.SoundPlayer player = new System.Media.SoundPlayer();
@@ -71,7 +71,7 @@ namespace Winformdle
         public static bool attempt6 = false;
 
 
-        public static string[] wordInventory ={  "ABOUND", "AMAZED", "ARCHED", "ASCEND", "ASSERT", "ASSIGN",
+        public static List<string> wordInventory = new List<string>() {  "ABOUND", "AMAZED", "ARCHED", "ASCEND", "ASSERT", "ASSIGN",
         "ATTACK", "AWAKEN", "BELLOW", "BOTTLE", "BUMPED", "BRAISE", "BLAZER", "BLIGHT", "BRAVED", "BOWLED",
         "COFFEE", "CIRCLE", "CRUNCH", "CARROT", "COOKIE", "CARVED", "CHEESE", "CHOOSE", "DINNER", "DOLLAR",
         "DEMAND", "DANGER", "DOCTOR", "DEEPER", "DESIRE", "DECIDE", "ESCAPE", "EXCUSE", "EXCEED", "ENJOYS",
@@ -624,8 +624,8 @@ namespace Winformdle
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            pnlOptions.Visible = true;
             pnlConfirmation.Visible = false;
-            pnlGame.Visible = true;
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
@@ -633,6 +633,70 @@ namespace Winformdle
             this.Hide();
             MainMenu MainMenu = new MainMenu();
             MainMenu.Show();
+        }
+
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            pnlOptions.Visible = false;
+            pnlGame.Visible = true;
+        }
+
+        private void btnBacktoMain_Click(object sender, EventArgs e)
+        {
+            pnlConfirmation.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnAddWord_Click(object sender, EventArgs e)
+        {
+            pnlAddWord.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnBackOptions_Click(object sender, EventArgs e)
+        {
+            pnlGame.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnAddWordConfirm_Click(object sender, EventArgs e)
+        {
+            string invalidInput = " 1234567890`~-=_+!@#$%^&*()[]{} \\| \' \" ;:,<.> ";
+
+            bool invalid = false;
+            foreach (char c in invalidInput)
+            {
+                if (txtAddWord.Text.Contains(c))
+                {
+                    invalid = true;
+                    break;
+                }
+            }
+            if (invalid)
+            {
+                MessageBox.Show("Invalid input, the word must only contain letters!");
+            }
+            else
+            {
+                if (txtAddWord.Text.Length == 6)
+                {
+                    guessWord = txtAddWord.Text.ToUpper();
+                    wordInventory.Add(guessWord);
+                    MessageBox.Show("A new word has been added into the word inventory!");
+                    pnlOptions.Visible = true;
+                    pnlAddWord.Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("Insufficient characters, the word must contain five(6) characters.");
+                }
+            }
+        }
+
+        private void btnAddWordBack_Click(object sender, EventArgs e)
+        {
+            pnlOptions.Visible = true;
+            pnlAddWord.Visible = false;
         }
     }
 }

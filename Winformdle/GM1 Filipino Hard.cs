@@ -59,7 +59,7 @@ namespace Winformdle
         public static bool attempt6 = false;
 
 
-        public static string[] wordInventory ={ "ABOGADO", "ABAKADA", "ABOKADO", "ASBTRAK", "AGRARYO", "AKSIYON", "AKTUWAL", "ALAKDAN", "ALAPAAP", "ALKALDE", "ALAMANGA", "ALOKOHOL", "ALYANSA", "ANUNSYO", "ASPEKTO", "BABAERO",
+        public static List<string> wordInventory = new List<string>() { "ABOGADO", "ABAKADA", "ABOKADO", "ASBTRAK", "AGRARYO", "AKSIYON", "AKTUWAL", "ALAKDAN", "ALAPAAP", "ALKALDE", "ALAMANGA", "ALOKOHOL", "ALYANSA", "ANUNSYO", "ASPEKTO", "BABAERO",
         "BABUYAN", "BAGABAG", "BAGOONG", "BAGTING", "BAITANG", "BAIWANG", "BAKANTE", "BAKURAN", "BALAKID", "BALANSE", "BALIKAT", "BAMPIRA", "BANDILA", "BANGKAY", "BANYAGA", "BARBERO", "BARILES", "BATERYA", "BATHALA",
         "BATIBOT", "BATUGAN", "DAIGDIG", "DAHILAN", "DALISAY", "DAMBANA", "DEKALRA", "DEPENDE", "DIGMAAN", "DIYABLO", "EDUKADO", "EKSAKTO", "EKTARYA", "EMOSYON", "ESPASYO", "GAHUMAN", "GAHAMAN", "GAGAMBA", "GALAMAY",
         "GATILYO", "GINHAWA", "GUNTING", "GRANADA", "GULUGOD", "GITLING", "HABILIN", "HADLANG", "HAGUPIT", "HAKBANG", "HALAMAN", "HALIMAW", "HIGANTE", "HIWALAY", "HIWATIG", "HUSGADO", "HUWEBES", "IMBENTO", "IMORTAL",
@@ -392,11 +392,6 @@ namespace Winformdle
 
         }
 
-        private void attempt1Char1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         //INPUTKEY METHOD
         private void Inputkey(string a)
         {
@@ -605,7 +600,7 @@ namespace Winformdle
         {
             //resets the guess word
             Random random = new Random();
-            randomGuessWord = random.Next(wordInventory.Length);
+            randomGuessWord = random.Next(wordInventory.Count);
             guessWord = wordInventory[randomGuessWord];
 
             System.Media.SoundPlayer player = new System.Media.SoundPlayer();
@@ -626,8 +621,8 @@ namespace Winformdle
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            pnlOptions.Visible = true;
             pnlConfirmation.Visible = false;
-            pnlGame.Visible = true;
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
@@ -635,6 +630,70 @@ namespace Winformdle
             this.Hide();
             MainMenu MainMenu = new MainMenu();
             MainMenu.Show();
+        }
+
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            pnlOptions.Visible = true;
+            pnlGame.Visible = false;
+        }
+
+        private void btnBacktoMain_Click(object sender, EventArgs e)
+        {
+            pnlConfirmation.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnAddWord_Click(object sender, EventArgs e)
+        {
+            pnlAddWord.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnBackOptions_Click(object sender, EventArgs e)
+        {
+            pnlGame.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnAddWordConfirm_Click(object sender, EventArgs e)
+        {
+            string invalidInput = " 1234567890`~-=_+!@#$%^&*()[]{} \\| \' \" ;:,<.> ";
+
+            bool invalid = false;
+            foreach (char c in invalidInput)
+            {
+                if (txtAddWord.Text.Contains(c))
+                {
+                    invalid = true;
+                    break;
+                }
+            }
+            if (invalid)
+            {
+                MessageBox.Show("Letra lamang ang nasa salita. ");
+            }
+            else
+            {
+                if (txtAddWord.Text.Length == 7)
+                {
+                    guessWord = txtAddWord.Text.ToUpper();
+                    wordInventory.Add(guessWord);
+                    MessageBox.Show("Nadagdag na ang salita sa \"word inventory\"! ");
+                    pnlOptions.Visible = true;
+                    pnlAddWord.Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("Hindi sapat ang mga letra ng salita, pitong(7) letra lamang.");
+                }
+            }
+        }
+
+        private void btnAddWordBack_Click(object sender, EventArgs e)
+        {
+            pnlOptions.Visible = true;
+            pnlAddWord.Visible = false;
         }
     }
 }

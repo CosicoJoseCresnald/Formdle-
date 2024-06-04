@@ -51,7 +51,7 @@ namespace Winformdle
         {
             //resets the guess word
             Random random = new Random();
-            randomGuessWord = random.Next(wordInventory.Length);
+            randomGuessWord = random.Next(wordInventory.Count);
             guessWord = wordInventory[randomGuessWord];
 
             System.Media.SoundPlayer player = new System.Media.SoundPlayer();
@@ -68,7 +68,7 @@ namespace Winformdle
         public static bool attempt6 = false;
 
 
-        public static string[] wordInventory ={ "ABAKUS", "ABUBOT", "ABULOY", "AGAHAN", "AGIMAT", "AHENTE", "AKSYON", "AKTWAL", "ALAALA", "ALAGAD", "ALAMAT", "ALARMA", "ALERTO", "ALIPIN", "ALYADO", "ANGKAT", "ANGKOP",
+        public static List<string> wordInventory = new List<string>() { "ABAKUS", "ABUBOT", "ABULOY", "AGAHAN", "AGIMAT", "AHENTE", "AKSYON", "AKTWAL", "ALAALA", "ALAGAD", "ALAMAT", "ALARMA", "ALERTO", "ALIPIN", "ALYADO", "ANGKAT", "ANGKOP",
         "BABALA", "BADYET", "BAGSAK", "BAGITO", "BAGKOS", "BAHAGI", "BALBAS", "BABALA", "BALITA", "BULKAN", "BALOTA", "BANGIS", "BANGIN", "BANGIN", "BANGUS", "BANSOT", "BARAKO", "BASBAS", "BIHIRA", "BINATA",
         "DAGDAG", "DALAGA", "DALIRI", "DANYOS", "DIBDIB", "DOKTOR", "DOLYAR", "DEKADA", "DANGAL", "EKSENA", "EKSTRA", "ENSAYO", "EPEKTO", "ESKIMO", "ESPADA", "ETNIKO", "GADYET", "GALANG", "GALING", "GASTOS",
         "GANYAN", "GARAHE", "GAROTE", "GASGAS", "GATONG", "GINANG", "GULONG", "GARTER", "HALATA", "HAPLOS", "HALANG", "HALIGI", "HALAYA", "HAMBOG", "HAMPAS", "HANDOG", "HANGAD", "HANGAL", "HARANA", "HARDIN",
@@ -594,14 +594,84 @@ namespace Winformdle
 
         private void btnBackMainMenu_Click(object sender, EventArgs e)
         {
-            pnlConfirmation.Visible = true;
-            pnlGame.Visible = false;
+
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             pnlConfirmation.Visible = false;
             pnlGame.Visible = true;
+        }
+
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            pnlOptions.Visible = true;
+            pnlGame.Visible = false;
+        }
+
+        private void btnBacktoMain_Click(object sender, EventArgs e)
+        {
+            pnlConfirmation.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnAddWord_Click(object sender, EventArgs e)
+        {
+            pnlAddWord.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnBackOptions_Click(object sender, EventArgs e)
+        {
+            pnlGame.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnAddWordConfirm_Click(object sender, EventArgs e)
+        {
+            string invalidInput = " 1234567890`~-=_+!@#$%^&*()[]{} \\| \' \" ;:,<.> ";
+
+            bool invalid = false;
+            foreach (char c in invalidInput)
+            {
+                if (txtAddWord.Text.Contains(c))
+                {
+                    invalid = true;
+                    break;
+                }
+            }
+            if (invalid)
+            {
+                MessageBox.Show("Letra lamang ang nasa salita. ");
+            }
+            else
+            {
+                if (txtAddWord.Text.Length == 6)
+                {
+                    guessWord = txtAddWord.Text.ToUpper();
+                    wordInventory.Add(guessWord);
+                    MessageBox.Show("Nadagdag na ang salita sa \"word inventory\"! ");
+                    pnlOptions.Visible = true;
+                    pnlAddWord.Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("Hindi sapat ang mga letra ng salita, anim(6) na letra lamang.");
+                }
+            }
+        }
+
+        private void btnAddWordBack_Click(object sender, EventArgs e)
+        {
+            pnlOptions.Visible = true;
+            pnlAddWord.Visible = false;
+        }
+
+        private void btnMainMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu MainMenu = new MainMenu();
+            MainMenu.Show();
         }
     }
 }

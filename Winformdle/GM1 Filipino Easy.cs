@@ -55,7 +55,7 @@ namespace Winformdle
         public static bool attempt5 = false;
         public static bool attempt6 = false;
 
-        public static string[] wordInventory ={ "AGILA", "ABAKA", "ABONO", "AGHAM", "AGWAT", "AGILA", "ALYAS", "ANTIK", "AKALA", "AKLAT", "AKTOR", "AKYAT", "ALAGA", "ALYAS",
+        public static List<string> wordInventory = new List<string>() { "AGILA", "ABAKA", "ABONO", "AGHAM", "AGWAT", "AGILA", "ALYAS", "ANTIK", "AKALA", "AKLAT", "AKTOR", "AKYAT", "ALAGA", "ALYAS",
 "AMBAG", "ALAGA", "AMBON", "BABAE", "BAHAY", "BATIS", "BATOK", "BANGO", "BASAG", "BENTA", "BUTAS", "BAGYO", "BINHI", "BUHAY", "BUKID", "BULAK", "BALOT", "BATOK", "BAKAL",
 "BANSA", "BALDE", "BASAG", "BENTE", "DAGSA", "DANAS", "DAHON", "DAPAT", "DIKTA", "DASAL", "DAGAT", "DAGTA", "DAPIT", "DUWAG", "DROGA", "EPIKO", "ETIKA", "GANTI", "GABOK",
 "GANDA", "GALIT", "GALAW", "GABAY", "GAMIT", "GUSTO", "GINTO", "GULAT", "GILID", "GANSA", "GUHIT", "GRIPO", "GAANO", "GALON", "GANAP", "GAPOS", "GATAS", "GAWAD", "GAYAK",
@@ -554,7 +554,7 @@ namespace Winformdle
         {
             //resets the guess word
             Random random = new Random();
-            randomGuessWord = random.Next(wordInventory.Length);
+            randomGuessWord = random.Next(wordInventory.Count);
             guessWord = wordInventory[randomGuessWord];
 
             System.Media.SoundPlayer player = new System.Media.SoundPlayer();
@@ -575,8 +575,8 @@ namespace Winformdle
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            pnlConfirmation.Visible = false;
-            pnlGame.Visible = true;
+            pnlOptions.Visible = true;
+            pnlConfirmation.Visible=false;
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
@@ -584,6 +584,70 @@ namespace Winformdle
             this.Hide();
             MainMenu MainMenu = new MainMenu();
             MainMenu.Show();
+        }
+
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            pnlOptions.Visible = true;
+            pnlGame.Visible = false;
+        }
+
+        private void btnBacktoMain_Click(object sender, EventArgs e)
+        {
+            pnlConfirmation.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnAddWord_Click(object sender, EventArgs e)
+        {
+            pnlAddWord.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnBackOptions_Click(object sender, EventArgs e)
+        {
+            pnlGame.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnAddWordConfirm_Click(object sender, EventArgs e)
+        {
+            string invalidInput = " 1234567890`~-=_+!@#$%^&*()[]{} \\| \' \" ;:,<.> ";
+
+            bool invalid = false;
+            foreach (char c in invalidInput)
+            {
+                if (txtAddWord.Text.Contains(c))
+                {
+                    invalid = true;
+                    break;
+                }
+            }
+            if (invalid)
+            {
+                MessageBox.Show("Letra lamang ang nasa salita. ");
+            }
+            else
+            {
+                if (txtAddWord.Text.Length == 5)
+                {
+                    guessWord = txtAddWord.Text.ToUpper();
+                    wordInventory.Add(guessWord);
+                    MessageBox.Show("Nadagdag na ang salita sa \"word inventory\"! ");
+                    pnlOptions.Visible = true;
+                    pnlAddWord.Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("Hindi sapat ang mga letra ng salita, limang(5) letra lamang.");
+                }
+            }
+        }
+
+        private void btnAddWordBack_Click(object sender, EventArgs e)
+        {
+            pnlOptions.Visible = true;
+            pnlAddWord.Visible = false;
         }
     }
 }

@@ -579,8 +579,6 @@ namespace Winformdle
                     MessageBox.Show("Insufficient characters, the word must contain five(5) characters.");
                 }
             }
-            game2EnglishEasyPnl.Visible = true;
-            pnlConfirmation.Visible = false;
         }
 
         private void game2EnglishEasy_FormClosed(object sender, FormClosedEventArgs e)
@@ -601,6 +599,13 @@ namespace Winformdle
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu MainMenu = new MainMenu();
+            MainMenu.Show();
+        }
+
+        private void btnBacktoMain_Click(object sender, EventArgs e)
         {
             this.Hide();
             MainMenu MainMenu = new MainMenu();

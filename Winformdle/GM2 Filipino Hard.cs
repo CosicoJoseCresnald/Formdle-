@@ -650,5 +650,12 @@ namespace Winformdle
             MainMenu MainMenu = new MainMenu();
             MainMenu.Show();
         }
+
+        private void btnBacktoMain_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu MainMenu = new MainMenu();
+            MainMenu.Show();
+        }
     }
 }

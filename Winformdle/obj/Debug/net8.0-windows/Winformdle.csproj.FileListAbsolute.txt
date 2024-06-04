@@ -192,3 +192,4 @@ F:\Formdle\Formdle Final Test\Formdle-Final-main\Winformdle\obj\Debug\net8.0-win
 F:\Formdle\Formdle Final Test\Formdle-Final-main\Winformdle\obj\Debug\net8.0-windows\Winformdle.pdb
 F:\Formdle\Formdle Final Test\Formdle-Final-main\Winformdle\obj\Debug\net8.0-windows\Winformdle.genruntimeconfig.cache
 F:\Formdle\Formdle Final Test\Formdle-Final-main\Winformdle\obj\Debug\net8.0-windows\ref\Winformdle.dll
+F:\Formdle\Formdle Final Test\Formdle-Final-main\Winformdle\obj\Debug\net8.0-windows\Winformdle.sourcelink.json

@@ -616,8 +616,6 @@ namespace Winformdle
                     MessageBox.Show("Insufficient characters, the word must contain seven(7) characters.");
                 }
             }
-            gamePnl.Visible = true;
-            pnlConfirmation.Visible = false;
         }
 
         private void game2EnglishHard_Load(object sender, EventArgs e)
@@ -645,6 +643,13 @@ namespace Winformdle
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu MainMenu = new MainMenu();
+            MainMenu.Show();
+        }
+
+        private void btnBacktoMain_Click(object sender, EventArgs e)
         {
             this.Hide();
             MainMenu MainMenu = new MainMenu();

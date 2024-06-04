@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -51,7 +52,7 @@ namespace Winformdle
         {
             //resets the guess word
             Random random = new Random();
-            randomGuessWord = random.Next(wordInventory.Length);
+            randomGuessWord = random.Next(wordInventory.Count);
             guessWord = wordInventory[randomGuessWord];
 
             System.Media.SoundPlayer player = new System.Media.SoundPlayer();
@@ -68,7 +69,7 @@ namespace Winformdle
         public static bool attempt6 = false;
 
 
-        public static string[] wordInventory ={ "ABSOLVE", "ANALYZE", "APPROVE", "ADVANCE", "ADDRESS",
+        public static List<string> wordInventory = new List<string>() { "ABSOLVE", "ANALYZE", "APPROVE", "ADVANCE", "ADDRESS",
         "AMONGST", "ALERTED", "ANXIETY", "BENEFIT", "BRITTLE", "BALANCE", "BREATHE", "BARRIER",
         "BROUGHT", "BELIEVE", "BENEATH", "CONDUCT", "CLOSURE", "CRUCIAL", "CHARGER", "CUPCAKE",
         "CORRECT", "CARRIED", "CIRCUIT", "DELIGHT", "DESSERT", "DYNAMIC", "DISPUTE", "DECLARE",
@@ -91,6 +92,9 @@ namespace Winformdle
         "VISITOR", "VERSION", "VARIETY", "VINTAGE", "VANILLA", "VARIANT", "VIBRANT", "VICTORY",
         "WITNESS", "WEALTHY", "WHISKEY", "WARNING", "WHISTLE" };
 
+
+
+        
 
         //Guessword Randomizer
         public static Random random = new Random();
@@ -628,7 +632,7 @@ namespace Winformdle
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            pnlGame.Visible = true;
+            pnlOptions.Visible = true;
             pnlConfirmation.Visible = false;
         }
 
@@ -641,13 +645,76 @@ namespace Winformdle
 
         private void btnBackMainMenu_Click(object sender, EventArgs e)
         {
-            pnlConfirmation.Visible = true;
-            pnlGame.Visible = false;
+
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            pnlOptions.Visible = true;
+            pnlGame.Visible = false;
+        }
+
+        private void btnBacktoMain_Click(object sender, EventArgs e)
+        {
+            pnlConfirmation.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnAddWord_Click(object sender, EventArgs e)
+        {
+            pnlAddWord.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnBackOptions_Click(object sender, EventArgs e)
+        {
+            pnlGame.Visible = true;
+            pnlOptions.Visible = false;
+        }
+
+        private void btnAddWordConfirm_Click(object sender, EventArgs e)
+        {
+            string invalidInput = " 1234567890`~-=_+!@#$%^&*()[]{} \\| \' \" ;:,<.> ";
+
+            bool invalid = false;
+            foreach (char c in invalidInput)
+            {
+                if (txtAddWord.Text.Contains(c))
+                {
+                    invalid = true;
+                    break;
+                }
+            }
+            if (invalid)
+            {
+                MessageBox.Show("Invalid input, the word must only contain letters!");
+            }
+            else
+            {
+                if (txtAddWord.Text.Length == 7)
+                {
+                    guessWord = txtAddWord.Text.ToUpper();
+                    wordInventory.Add(guessWord);
+                    MessageBox.Show("A new word has been added into the word inventory!");
+                    pnlOptions.Visible = true;
+                    pnlAddWord.Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("Insufficient characters, the word must contain five(7) characters.");
+                }
+            }
+        }
+
+        private void btnAddWordBack_Click(object sender, EventArgs e)
+        {
+            pnlOptions.Visible = true;
+            pnlAddWord.Visible = false;
         }
     }
 }

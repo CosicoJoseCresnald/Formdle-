@@ -32,8 +32,10 @@
             btnBack = new Button();
             lblInstructions = new Label();
             btnMainMenu = new Button();
-            gamePnl = new Panel();
-            btnBackMainMenu = new Button();
+            pnlGame = new Panel();
+            lblScoreNumber = new Label();
+            lblScore = new Label();
+            btnOptions = new Button();
             panel1 = new Panel();
             attempt6Char5 = new TextBox();
             attempt6Char4 = new TextBox();
@@ -94,8 +96,21 @@
             eBtn = new Button();
             wBtn = new Button();
             qBtn = new Button();
+            pnlOptions = new Panel();
+            btnBackOptions = new Button();
+            btnBacktoMain = new Button();
+            btnAddWord = new Button();
+            lblOptions = new Label();
+            pnlAddWord = new Panel();
+            label2 = new Label();
+            txtAddWord = new TextBox();
+            btnAddWordBack = new Button();
+            btnAddWordConfirm = new Button();
+            lblAddWord = new Label();
             pnlConfirmation.SuspendLayout();
-            gamePnl.SuspendLayout();
+            pnlGame.SuspendLayout();
+            pnlOptions.SuspendLayout();
+            pnlAddWord.SuspendLayout();
             SuspendLayout();
             // 
             // pnlConfirmation
@@ -110,6 +125,7 @@
             pnlConfirmation.Name = "pnlConfirmation";
             pnlConfirmation.Size = new Size(507, 562);
             pnlConfirmation.TabIndex = 97;
+            pnlConfirmation.Visible = false;
             // 
             // btnBack
             // 
@@ -149,93 +165,119 @@
             btnMainMenu.UseVisualStyleBackColor = true;
             btnMainMenu.Click += btnMainMenu_Click;
             // 
-            // gamePnl
+            // pnlGame
             // 
-            gamePnl.BackgroundImage = Properties.Resources.BG;
-            gamePnl.BackgroundImageLayout = ImageLayout.Stretch;
-            gamePnl.Controls.Add(btnBackMainMenu);
-            gamePnl.Controls.Add(panel1);
-            gamePnl.Controls.Add(attempt6Char5);
-            gamePnl.Controls.Add(attempt6Char4);
-            gamePnl.Controls.Add(attempt6Char3);
-            gamePnl.Controls.Add(attempt6Char2);
-            gamePnl.Controls.Add(attempt6Char1);
-            gamePnl.Controls.Add(attempt5Char5);
-            gamePnl.Controls.Add(attempt5Char4);
-            gamePnl.Controls.Add(attempt5Char3);
-            gamePnl.Controls.Add(attempt5Char2);
-            gamePnl.Controls.Add(attempt5Char1);
-            gamePnl.Controls.Add(attempt4Char5);
-            gamePnl.Controls.Add(attempt4Char4);
-            gamePnl.Controls.Add(attempt4Char3);
-            gamePnl.Controls.Add(attempt4Char2);
-            gamePnl.Controls.Add(attempt4Char1);
-            gamePnl.Controls.Add(attempt3Char5);
-            gamePnl.Controls.Add(attempt3Char4);
-            gamePnl.Controls.Add(attempt3Char3);
-            gamePnl.Controls.Add(attempt3Char2);
-            gamePnl.Controls.Add(attempt3Char1);
-            gamePnl.Controls.Add(attempt2Char5);
-            gamePnl.Controls.Add(attempt2Char4);
-            gamePnl.Controls.Add(attempt2Char3);
-            gamePnl.Controls.Add(attempt2Char2);
-            gamePnl.Controls.Add(attempt2Char1);
-            gamePnl.Controls.Add(attempt1Char5);
-            gamePnl.Controls.Add(attempt1Char4);
-            gamePnl.Controls.Add(attempt1Char3);
-            gamePnl.Controls.Add(attempt1Char2);
-            gamePnl.Controls.Add(attempt1Char1);
-            gamePnl.Controls.Add(enterBtn);
-            gamePnl.Controls.Add(mBtn);
-            gamePnl.Controls.Add(nBtn);
-            gamePnl.Controls.Add(bBtn);
-            gamePnl.Controls.Add(vBtn);
-            gamePnl.Controls.Add(cBtn);
-            gamePnl.Controls.Add(xBtn);
-            gamePnl.Controls.Add(zBtn);
-            gamePnl.Controls.Add(backspaceBtn);
-            gamePnl.Controls.Add(button20);
-            gamePnl.Controls.Add(lBtn);
-            gamePnl.Controls.Add(kBtn);
-            gamePnl.Controls.Add(jBtn);
-            gamePnl.Controls.Add(hBtn);
-            gamePnl.Controls.Add(gBtn);
-            gamePnl.Controls.Add(fBtn);
-            gamePnl.Controls.Add(dBtn);
-            gamePnl.Controls.Add(sBtn);
-            gamePnl.Controls.Add(aBtn);
-            gamePnl.Controls.Add(pBtn);
-            gamePnl.Controls.Add(oBtn);
-            gamePnl.Controls.Add(iBtn);
-            gamePnl.Controls.Add(uBtn);
-            gamePnl.Controls.Add(yBtn);
-            gamePnl.Controls.Add(tBtn);
-            gamePnl.Controls.Add(rBtn);
-            gamePnl.Controls.Add(eBtn);
-            gamePnl.Controls.Add(wBtn);
-            gamePnl.Controls.Add(qBtn);
-            gamePnl.Dock = DockStyle.Fill;
-            gamePnl.Location = new Point(0, 0);
-            gamePnl.Name = "gamePnl";
-            gamePnl.Size = new Size(507, 562);
-            gamePnl.TabIndex = 98;
+            pnlGame.BackgroundImage = Properties.Resources.BG;
+            pnlGame.BackgroundImageLayout = ImageLayout.Stretch;
+            pnlGame.Controls.Add(lblScoreNumber);
+            pnlGame.Controls.Add(lblScore);
+            pnlGame.Controls.Add(btnOptions);
+            pnlGame.Controls.Add(panel1);
+            pnlGame.Controls.Add(attempt6Char5);
+            pnlGame.Controls.Add(attempt6Char4);
+            pnlGame.Controls.Add(attempt6Char3);
+            pnlGame.Controls.Add(attempt6Char2);
+            pnlGame.Controls.Add(attempt6Char1);
+            pnlGame.Controls.Add(attempt5Char5);
+            pnlGame.Controls.Add(attempt5Char4);
+            pnlGame.Controls.Add(attempt5Char3);
+            pnlGame.Controls.Add(attempt5Char2);
+            pnlGame.Controls.Add(attempt5Char1);
+            pnlGame.Controls.Add(attempt4Char5);
+            pnlGame.Controls.Add(attempt4Char4);
+            pnlGame.Controls.Add(attempt4Char3);
+            pnlGame.Controls.Add(attempt4Char2);
+            pnlGame.Controls.Add(attempt4Char1);
+            pnlGame.Controls.Add(attempt3Char5);
+            pnlGame.Controls.Add(attempt3Char4);
+            pnlGame.Controls.Add(attempt3Char3);
+            pnlGame.Controls.Add(attempt3Char2);
+            pnlGame.Controls.Add(attempt3Char1);
+            pnlGame.Controls.Add(attempt2Char5);
+            pnlGame.Controls.Add(attempt2Char4);
+            pnlGame.Controls.Add(attempt2Char3);
+            pnlGame.Controls.Add(attempt2Char2);
+            pnlGame.Controls.Add(attempt2Char1);
+            pnlGame.Controls.Add(attempt1Char5);
+            pnlGame.Controls.Add(attempt1Char4);
+            pnlGame.Controls.Add(attempt1Char3);
+            pnlGame.Controls.Add(attempt1Char2);
+            pnlGame.Controls.Add(attempt1Char1);
+            pnlGame.Controls.Add(enterBtn);
+            pnlGame.Controls.Add(mBtn);
+            pnlGame.Controls.Add(nBtn);
+            pnlGame.Controls.Add(bBtn);
+            pnlGame.Controls.Add(vBtn);
+            pnlGame.Controls.Add(cBtn);
+            pnlGame.Controls.Add(xBtn);
+            pnlGame.Controls.Add(zBtn);
+            pnlGame.Controls.Add(backspaceBtn);
+            pnlGame.Controls.Add(button20);
+            pnlGame.Controls.Add(lBtn);
+            pnlGame.Controls.Add(kBtn);
+            pnlGame.Controls.Add(jBtn);
+            pnlGame.Controls.Add(hBtn);
+            pnlGame.Controls.Add(gBtn);
+            pnlGame.Controls.Add(fBtn);
+            pnlGame.Controls.Add(dBtn);
+            pnlGame.Controls.Add(sBtn);
+            pnlGame.Controls.Add(aBtn);
+            pnlGame.Controls.Add(pBtn);
+            pnlGame.Controls.Add(oBtn);
+            pnlGame.Controls.Add(iBtn);
+            pnlGame.Controls.Add(uBtn);
+            pnlGame.Controls.Add(yBtn);
+            pnlGame.Controls.Add(tBtn);
+            pnlGame.Controls.Add(rBtn);
+            pnlGame.Controls.Add(eBtn);
+            pnlGame.Controls.Add(wBtn);
+            pnlGame.Controls.Add(qBtn);
+            pnlGame.Dock = DockStyle.Fill;
+            pnlGame.Location = new Point(0, 0);
+            pnlGame.Name = "pnlGame";
+            pnlGame.Size = new Size(507, 562);
+            pnlGame.TabIndex = 98;
             // 
-            // btnBackMainMenu
+            // lblScoreNumber
             // 
-            btnBackMainMenu.BackColor = Color.White;
-            btnBackMainMenu.Font = new Font("Franklin Gothic Medium", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBackMainMenu.Location = new Point(0, 0);
-            btnBackMainMenu.Name = "btnBackMainMenu";
-            btnBackMainMenu.Size = new Size(69, 31);
-            btnBackMainMenu.TabIndex = 157;
-            btnBackMainMenu.Text = "BACK";
-            btnBackMainMenu.UseVisualStyleBackColor = false;
-            btnBackMainMenu.Click += btnBackMainMenu_Click;
+            lblScoreNumber.AutoSize = true;
+            lblScoreNumber.BackColor = Color.Transparent;
+            lblScoreNumber.Font = new Font("Impact", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblScoreNumber.ForeColor = Color.WhiteSmoke;
+            lblScoreNumber.Location = new Point(303, 9);
+            lblScoreNumber.Name = "lblScoreNumber";
+            lblScoreNumber.Size = new Size(27, 29);
+            lblScoreNumber.TabIndex = 163;
+            lblScoreNumber.Text = "0";
+            // 
+            // lblScore
+            // 
+            lblScore.AutoSize = true;
+            lblScore.BackColor = Color.Transparent;
+            lblScore.Font = new Font("Impact", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblScore.ForeColor = Color.WhiteSmoke;
+            lblScore.Location = new Point(207, 9);
+            lblScore.Name = "lblScore";
+            lblScore.Size = new Size(90, 29);
+            lblScore.TabIndex = 162;
+            lblScore.Text = "SCORE: \r\n";
+            // 
+            // btnOptions
+            // 
+            btnOptions.BackColor = Color.White;
+            btnOptions.Font = new Font("Franklin Gothic Medium", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnOptions.Location = new Point(0, 0);
+            btnOptions.Name = "btnOptions";
+            btnOptions.Size = new Size(69, 31);
+            btnOptions.TabIndex = 157;
+            btnOptions.Text = "BACK";
+            btnOptions.UseVisualStyleBackColor = false;
+            btnOptions.Click += btnOptions_Click;
             // 
             // panel1
             // 
             panel1.BackgroundImage = Properties.Resources.bg_fixed;
-            panel1.Location = new Point(145, 38);
+            panel1.Location = new Point(145, 53);
             panel1.Name = "panel1";
             panel1.Size = new Size(221, 48);
             panel1.TabIndex = 156;
@@ -799,6 +841,151 @@
             qBtn.UseVisualStyleBackColor = true;
             qBtn.Click += qBtn_Click;
             // 
+            // pnlOptions
+            // 
+            pnlOptions.BackgroundImage = Properties.Resources.BG;
+            pnlOptions.BackgroundImageLayout = ImageLayout.Stretch;
+            pnlOptions.Controls.Add(btnBackOptions);
+            pnlOptions.Controls.Add(btnBacktoMain);
+            pnlOptions.Controls.Add(btnAddWord);
+            pnlOptions.Controls.Add(lblOptions);
+            pnlOptions.Dock = DockStyle.Fill;
+            pnlOptions.Location = new Point(0, 0);
+            pnlOptions.Name = "pnlOptions";
+            pnlOptions.Size = new Size(507, 562);
+            pnlOptions.TabIndex = 236;
+            pnlOptions.Visible = false;
+            // 
+            // btnBackOptions
+            // 
+            btnBackOptions.FlatAppearance.BorderColor = Color.Black;
+            btnBackOptions.FlatAppearance.BorderSize = 34;
+            btnBackOptions.Font = new Font("Franklin Gothic Medium", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBackOptions.Location = new Point(188, 361);
+            btnBackOptions.Name = "btnBackOptions";
+            btnBackOptions.Size = new Size(154, 71);
+            btnBackOptions.TabIndex = 12;
+            btnBackOptions.Text = "BACK";
+            btnBackOptions.UseVisualStyleBackColor = true;
+            btnBackOptions.Click += btnBackOptions_Click;
+            // 
+            // btnBacktoMain
+            // 
+            btnBacktoMain.FlatAppearance.BorderColor = Color.Black;
+            btnBacktoMain.FlatAppearance.BorderSize = 34;
+            btnBacktoMain.Font = new Font("Franklin Gothic Medium", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBacktoMain.Location = new Point(188, 159);
+            btnBacktoMain.Name = "btnBacktoMain";
+            btnBacktoMain.Size = new Size(154, 71);
+            btnBacktoMain.TabIndex = 11;
+            btnBacktoMain.Tag = "";
+            btnBacktoMain.Text = "BACK TO MAIN MENU";
+            btnBacktoMain.UseVisualStyleBackColor = true;
+            btnBacktoMain.Click += btnBacktoMain_Click;
+            // 
+            // btnAddWord
+            // 
+            btnAddWord.FlatAppearance.BorderColor = Color.Black;
+            btnAddWord.FlatAppearance.BorderSize = 34;
+            btnAddWord.Font = new Font("Franklin Gothic Medium", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddWord.Location = new Point(188, 261);
+            btnAddWord.Name = "btnAddWord";
+            btnAddWord.Size = new Size(154, 71);
+            btnAddWord.TabIndex = 10;
+            btnAddWord.Text = "ADD A NEW WORD";
+            btnAddWord.UseVisualStyleBackColor = true;
+            btnAddWord.Click += btnAddWord_Click;
+            // 
+            // lblOptions
+            // 
+            lblOptions.AutoSize = true;
+            lblOptions.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblOptions.Location = new Point(228, 86);
+            lblOptions.Name = "lblOptions";
+            lblOptions.Size = new Size(76, 21);
+            lblOptions.TabIndex = 9;
+            lblOptions.Text = "OPTIONS";
+            lblOptions.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pnlAddWord
+            // 
+            pnlAddWord.BackgroundImage = Properties.Resources.BG;
+            pnlAddWord.BackgroundImageLayout = ImageLayout.Stretch;
+            pnlAddWord.Controls.Add(label2);
+            pnlAddWord.Controls.Add(txtAddWord);
+            pnlAddWord.Controls.Add(btnAddWordBack);
+            pnlAddWord.Controls.Add(btnAddWordConfirm);
+            pnlAddWord.Controls.Add(lblAddWord);
+            pnlAddWord.Dock = DockStyle.Fill;
+            pnlAddWord.Location = new Point(0, 0);
+            pnlAddWord.Name = "pnlAddWord";
+            pnlAddWord.Size = new Size(507, 562);
+            pnlAddWord.TabIndex = 237;
+            pnlAddWord.Visible = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Impact", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.WhiteSmoke;
+            label2.Location = new Point(110, 171);
+            label2.Name = "label2";
+            label2.Size = new Size(334, 92);
+            label2.TabIndex = 20;
+            label2.Text = "Note: the word you have added might\r\n have a small chance to appear in the\r\n next few games, since the word \r\ninventory contains too many words\r\n";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txtAddWord
+            // 
+            txtAddWord.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtAddWord.Location = new Point(181, 295);
+            txtAddWord.MaxLength = 5;
+            txtAddWord.Multiline = true;
+            txtAddWord.Name = "txtAddWord";
+            txtAddWord.Size = new Size(164, 40);
+            txtAddWord.TabIndex = 17;
+            txtAddWord.TextAlign = HorizontalAlignment.Center;
+            // 
+            // btnAddWordBack
+            // 
+            btnAddWordBack.FlatAppearance.BorderColor = Color.Black;
+            btnAddWordBack.FlatAppearance.BorderSize = 34;
+            btnAddWordBack.Font = new Font("Franklin Gothic Medium", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddWordBack.Location = new Point(75, 366);
+            btnAddWordBack.Name = "btnAddWordBack";
+            btnAddWordBack.Size = new Size(154, 71);
+            btnAddWordBack.TabIndex = 16;
+            btnAddWordBack.Text = "BACK";
+            btnAddWordBack.UseVisualStyleBackColor = true;
+            btnAddWordBack.Click += btnAddWordBack_Click;
+            // 
+            // btnAddWordConfirm
+            // 
+            btnAddWordConfirm.FlatAppearance.BorderColor = Color.Black;
+            btnAddWordConfirm.FlatAppearance.BorderSize = 34;
+            btnAddWordConfirm.Font = new Font("Franklin Gothic Medium", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddWordConfirm.Location = new Point(297, 366);
+            btnAddWordConfirm.Name = "btnAddWordConfirm";
+            btnAddWordConfirm.Size = new Size(154, 71);
+            btnAddWordConfirm.TabIndex = 14;
+            btnAddWordConfirm.Text = "ADD A NEW WORD";
+            btnAddWordConfirm.UseVisualStyleBackColor = true;
+            btnAddWordConfirm.Click += btnAddWordConfirm_Click;
+            // 
+            // lblAddWord
+            // 
+            lblAddWord.AutoSize = true;
+            lblAddWord.BackColor = Color.Transparent;
+            lblAddWord.Font = new Font("Impact", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAddWord.ForeColor = Color.WhiteSmoke;
+            lblAddWord.Location = new Point(60, 92);
+            lblAddWord.Name = "lblAddWord";
+            lblAddWord.Size = new Size(406, 58);
+            lblAddWord.TabIndex = 19;
+            lblAddWord.Text = "Please type the word that you wanted\r\nto add in the Word Inventory\r\n";
+            lblAddWord.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // game1EnglishEasy
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -807,8 +994,10 @@
             BackgroundImage = Properties.Resources.BG;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(507, 562);
-            Controls.Add(gamePnl);
+            Controls.Add(pnlGame);
             Controls.Add(pnlConfirmation);
+            Controls.Add(pnlAddWord);
+            Controls.Add(pnlOptions);
             DoubleBuffered = true;
             Name = "game1EnglishEasy";
             StartPosition = FormStartPosition.CenterScreen;
@@ -817,20 +1006,34 @@
             Load += game1EnglishEasy_Load;
             pnlConfirmation.ResumeLayout(false);
             pnlConfirmation.PerformLayout();
-            gamePnl.ResumeLayout(false);
-            gamePnl.PerformLayout();
+            pnlGame.ResumeLayout(false);
+            pnlGame.PerformLayout();
+            pnlOptions.ResumeLayout(false);
+            pnlOptions.PerformLayout();
+            pnlAddWord.ResumeLayout(false);
+            pnlAddWord.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
         private Panel pnlMainMenu;
         private Panel pnlConfirmation;
-        private Panel gamePnl;
+        private Panel pnlGame;
         private Panel panel1;
         private Label lblInstructions;
-        private Button btnBackMainMenu;
+        private Button btnOptions;
         private Button btnBack;
         private Button btnMainMenu;
+        private Panel pnlOptions;
+        private Button btnBackOptions;
+        private Button btnBacktoMain;
+        private Button btnAddWord;
+        private Label lblOptions;
+        private Panel pnlAddWord;
+        private Label label2;
+        private Label lblAddWord;
+        private Button btnAddWordBack;
+        private Button btnAddWordConfirm;
         public static TextBox attempt6Char5;
         public static TextBox attempt6Char4;
         public static TextBox attempt6Char3;
@@ -890,5 +1093,8 @@
         public static Button eBtn;
         public static Button wBtn;
         public static Button qBtn;
+        public static TextBox txtAddWord;
+        private Label lblScore;
+        public static Label lblScoreNumber;
     }
 }

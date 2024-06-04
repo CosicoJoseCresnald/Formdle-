@@ -589,8 +589,6 @@ namespace Winformdle
                     MessageBox.Show("Hindi sapat ang mga letra ng salita, anim(6) na letra lamang.");
                 }
             }
-            gamePnl.Visible = true;
-            pnlConfirmation.Visible = false;
         }
 
         private void game2FilipinoMedium_Load(object sender, EventArgs e)
@@ -618,6 +616,13 @@ namespace Winformdle
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu MainMenu = new MainMenu();
+            MainMenu.Show();
+        }
+
+        private void btnBacktoMain_Click(object sender, EventArgs e)
         {
             this.Hide();
             MainMenu MainMenu = new MainMenu();

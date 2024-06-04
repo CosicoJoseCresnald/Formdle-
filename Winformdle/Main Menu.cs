@@ -11,6 +11,7 @@ namespace Winformdle
 
         public static int gameModePick = 0;
         public static int languagePick = 0;
+        int score = 0;
 
 
         private void Form1_Load(object sender, EventArgs e)
